@@ -1,9 +1,8 @@
 <?php
 
 $id = '?';
-if (isset($_GET['id']) {
+if (isset($_GET['id'])
 	$id = $_GET['id'];
-}
 ?>
 
 <!DOCTYPE html>
