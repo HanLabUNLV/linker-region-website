@@ -34,7 +34,7 @@ input {
   height: 1.6em;
 }
 
-.hanlab-link {
+.hanlab-link, .fancy-link {
   background: #fd0;
   padding:0.1em 0.5em;
   margin-left: 0.2em;

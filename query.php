@@ -15,11 +15,11 @@ if (isset($_GET['id']))
 
 
 <body>
-	test page<br>
-
-	<?php
-	echo "Hello World!";
-	?>
+	<a href="/linkerregions" class="fancy-link">Back</a><br>
+	<h1>Query Results</h1>
+	<h2><?php echo $id; ?></h2>
+	
+	<p>Nothing to see here yet :(</p>
 
 
 </body>
