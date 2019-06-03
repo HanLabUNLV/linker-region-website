@@ -24,9 +24,12 @@ if (isset($_GET['id']))
 	<code>
 		<?php
 		$fh = fopen('/linkerregions/data/splitty.txt', 'r');
+		$n = 0;
 		while ($line = fgets($fh)) {
 			echo $line;
-			break;
+			$n = $n + 1;
+			if ($n > 5)
+				break
 		}
 		fclose($fh)
 		?>
