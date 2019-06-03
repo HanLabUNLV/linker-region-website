@@ -21,6 +21,19 @@ if (isset($_GET['id']))
 	
 	<p>Nothing to see here yet :(</p>
 
+	<code>
+		<?php
+		$fh = fopen('/linkerregions/data/splitty.txt', 'r');
+		while ($line = fgets($fh)) {
+			echo $line;
+			break;
+		}
+		fclose($fh)
+		?>
+
+
+	</code>
+
 
 </body>
 </html>
