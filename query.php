@@ -29,7 +29,7 @@ if (isset($_GET['id']))
 			echo $line;
 			$n = $n + 1;
 			if ($n > 5)
-				break
+				break;
 		}
 		fclose($fh)
 		?>
