@@ -23,13 +23,16 @@ if (isset($_GET['id']))
 
 	<code>
 		<?php
-		$fh = fopen('/linkerregions/data/splitty.txt', 'r');
+		$fh = fopen('data/splitty.txt', 'r');
 		$n = 0;
 		while ($line = fgets($fh)) {
-			echo $line;
-			$n = $n + 1;
-			if ($n > 5)
+			$tab = strpos($line, "\t");
+			
+			
+			if (substr($line, 0, $tab) == $id) {
+				echo $line;
 				break;
+			}
 		}
 		fclose($fh)
 		?>
