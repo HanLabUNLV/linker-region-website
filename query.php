@@ -2,7 +2,7 @@
 
 $id = '?';
 if (isset($_GET['id']))
-	$id = $_GET['id'];
+	$id = trim($_GET['id']);
 ?>
 
 <!DOCTYPE html>
@@ -16,30 +16,39 @@ if (isset($_GET['id']))
 
 <body>
 	<a href="/linkerregions" class="fancy-link">Back</a><br>
-	<h1>Query Results</h1>
-	<h2><?php echo $id; ?></h2>
-	
-	<p>Nothing to see here yet :(</p>
+	<h1>Query Results&nbsp</h1>
+	<h2>"<?php echo $id; ?>"</h2><br>
+	<p><b>Found:</b><p>
+	<ul>
+	<?php
+	$fh = fopen('data/idlist.txt', 'r');
+	$n = 0;
+	while ($line = fgets($fh)) {
+		$line_id = trim($line);
+		if (substr($line_id, 0, strlen($id)) == $id) {
+			echo "<li><a href='#" . $line_id . "'>" . $line_id . "</a></li>";
+		}	
+	}
+	fclose($fh)
+	?>
+	</ul>
 
-	<code>
-		<?php
-		$fh = fopen('data/splitty.txt', 'r');
-		$n = 0;
-		while ($line = fgets($fh)) {
-			$tab = strpos($line, "\t");
-			
-			
-			if (substr($line, 0, $tab) == $id) {
-				echo $line;
-				break;
-			}
-		}
-		fclose($fh)
-		?>
+	<hr>
 
-
-	</code>
-
+	<?php
+	$fh = fopen('data/stratified.txt', 'r');
+	$n = 0;
+	while ($line = fgets($fh)) {
+		$tab = strpos($line, "\t");
+		$line_id = substr($line, 0, $tab);	
+		
+		if (substr($line_id, 0, strlen($id)) == $id) {
+			echo "<h3 id='" . $line_id . "'>" . $line_id . "</h3>";
+			echo "<code>" . $line . "</code><br>";	
+		}	
+	}
+	fclose($fh)
+	?>
 
 </body>
 </html>
