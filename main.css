@@ -61,15 +61,23 @@ a {
 
 
 .region-figure {
-  display:block;
-  background: #aaa;
+  display:inline-block;
+  background: #ddd;
   font-family: 'IBM Plex Mono', monospace;
 }
 
 .region-figure .domain {
-  background: #fd0;
+  display: inline;
+  padding:0;
+  background: #7fb1ea;
 }
 
 .region-figure .linker {
-  background: #df0;
+  display: inline;
+  padding:0;
+  background: #ff87ba;
+}
+
+.region-figure .linker:hover, .region-figure .domain:hover {
+  color: #fff;
 }
