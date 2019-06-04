@@ -58,3 +58,18 @@ a {
   color:#202020;
   text-decoration: none;
 }
+
+
+.region-figure {
+  display:block;
+  background: #aaa;
+  font-family: 'IBM Plex Mono', monospace;
+}
+
+.region-figure .domain {
+  background: #fd0;
+}
+
+.region-figure .linker {
+  background: #df0;
+}
