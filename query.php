@@ -51,9 +51,8 @@ if (isset($_GET['id']))
 			$nextSeq = NULL;
 			while ($x = fgets($fasta_h)) {
 				if (substr($x, 0, 1) == ">") {
-					$nextSeq = trim(substr($x,1));
-					$sequences[$nextSeq] = "";
-					
+					$nextSeq = trim(substr($x,1)) ;
+					$sequences[$nextSeq] = "";					
 				} else {
 					$sequences[$nextSeq] = $sequences[$nextSeq] . trim($x);
 				}
@@ -77,38 +76,40 @@ if (isset($_GET['id']))
 					$end = $tup[1];
 					echo $start . "," . $end . "<br>";
 
-					if ($nextWrap < $start) {
+					while ($nextWrap < $start) {
 						$out_seq = $out_seq . substr($src_seq, $i, $nextWrap - $i) . "<br>";
 						$i = $nextWrap;
 						$nextWrap = $nextWrap + 60;
-					} else {
-						$out_seq = $out_seq . substr($src_seq, $i, $start - $i) . "[";
-						$i = $start;
-						if ($i == $nextWrap) {
-							$out_seq = $out_seq . substr($src_seq, $i, $nextWrap - $i) . "<br>";
-							$nextWrap = $nextWrap + 60;
-						}
-					}
+					} 
+					$out_seq = $out_seq . substr($src_seq, $i, $start - $i);
+					if ($j > 0)
+						$out_seq = $out_seq . "</span>";
+					$out_seq = $out_seq . "<span class='domain'>";
+					$i = $start;
 
-					if ($nextWrap < $end) {
+					while ($nextWrap < $end) {
 						$out_seq = $out_seq . substr($src_seq, $i, $nextWrap - $i) . "<br>";
 						$i = $nextWrap;
 						$nextWrap = $nextWrap + 60;
-					} else {
-						$out_seq = $out_seq . substr($src_seq, $i, $end - $i) . "]";
-						$i = $end;
-						if ($i == $nextWra) {
-							$out_seq = $out_seq . substr($src_seq, $i, $nextWrap - $i) . "<br>";
-							$nextWrap = $nextWrap + 60;
-						}
 					}
+					$out_seq = $out_seq . substr($src_seq, $i, $end - $i) . "</span>";
+					$i = $end;
+					if ($j < sizeof($domains)-1)
+						$out_seq = $out_seq . "<span class='linker'>";
 
 
 				}
+				
+				while ($nextWrap < strlen($src_seq)) {
+					$out_seq = $out_seq . substr($src_seq, $i, $nextWrap - $i) . "<br>";
+					$i = $nextWrap;
+					$nextWrap = $nextWrap + 60;
+				}
+				$out_seq = $out_seq . substr($src_seq, $i);
 
 
 
-				echo '<div class="region-figure">' . $src_seq . '</div><br>';
+				//echo '<div class="region-figure">' . $src_seq . '</div><br>';
 				echo '<div class="region-figure">' . $out_seq . '</div><br>';
 			}	
 
