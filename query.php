@@ -63,14 +63,53 @@ if (isset($_GET['id']))
 
 			$json_obj = json_decode($line_json);
 			
-			foreach ($json_obj as $protein_id => $idk) {
+			foreach ($json_obj as $protein_id => $domains) {
+				$src_seq = $sequences[$protein_id];
+				$out_seq = "";
+				$nextWrap = 60;
+				$i = 0;
+
+
 				echo $protein_id . "<br>";
 				
-				foreach($idk as $tup)
-					echo $tup[0] . "," . $tup[1];
+				foreach($domains as $j => $tup) {
+					$start = $tup[0];
+					$end = $tup[1];
+					echo $start . "," . $end . "<br>";
 
-	
-				echo '<div class="region-figure">' . $sequences[$protein_id] . '</div><br>';
+					if ($nextWrap < $start) {
+						$out_seq = $out_seq . substr($src_seq, $i, $nextWrap - $i) . "<br>";
+						$i = $nextWrap;
+						$nextWrap = $nextWrap + 60;
+					} else {
+						$out_seq = $out_seq . substr($src_seq, $i, $start - $i) . "[";
+						$i = $start;
+						if ($i == $nextWrap) {
+							$out_seq = $out_seq . substr($src_seq, $i, $nextWrap - $i) . "<br>";
+							$nextWrap = $nextWrap + 60;
+						}
+					}
+
+					if ($nextWrap < $end) {
+						$out_seq = $out_seq . substr($src_seq, $i, $nextWrap - $i) . "<br>";
+						$i = $nextWrap;
+						$nextWrap = $nextWrap + 60;
+					} else {
+						$out_seq = $out_seq . substr($src_seq, $i, $end - $i) . "]";
+						$i = $end;
+						if ($i == $nextWra) {
+							$out_seq = $out_seq . substr($src_seq, $i, $nextWrap - $i) . "<br>";
+							$nextWrap = $nextWrap + 60;
+						}
+					}
+
+
+				}
+
+
+
+				echo '<div class="region-figure">' . $src_seq . '</div><br>';
+				echo '<div class="region-figure">' . $out_seq . '</div><br>';
 			}	
 
 			echo "<h3 id='" . $line_id . "'>" . $line_id . "</h3>";
