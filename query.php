@@ -3,6 +3,57 @@
 $id = '?';
 if (isset($_GET['id']))
 	$id = trim($_GET['id']);
+
+function displayRegions($protein_id, $domains, $src_seq) {
+	$out_seq = "";
+	$nextWrap = 60;
+	$i = 0;
+
+
+
+	
+	foreach($domains as $j => $tup) {
+		$start = $tup[0];
+		$end = $tup[1];
+
+		while ($nextWrap < $start) {
+			$out_seq = $out_seq . substr($src_seq, $i, $nextWrap - $i) . "<br>";
+			$i = $nextWrap;
+			$nextWrap = $nextWrap + 60;
+		} 
+		$out_seq = $out_seq . substr($src_seq, $i, $start - $i);
+		if ($j > 0)
+			$out_seq = $out_seq . "</a>";
+		$out_seq = $out_seq . "<a class='domain'>";
+		$i = $start;
+
+		while ($nextWrap < $end) {
+			$out_seq = $out_seq . substr($src_seq, $i, $nextWrap - $i) . "<br>";
+			$i = $nextWrap;
+			$nextWrap = $nextWrap + 60;
+		}
+		$out_seq = $out_seq . substr($src_seq, $i, $end - $i) . "</a>";
+		$i = $end;
+		if ($j < sizeof($domains)-1)
+			$out_seq = $out_seq . "<a class='linker'>";
+
+
+	}
+	
+	while ($nextWrap < strlen($src_seq)) {
+		$out_seq = $out_seq . substr($src_seq, $i, $nextWrap - $i) . "<br>";
+		$i = $nextWrap;
+		$nextWrap = $nextWrap + 60;
+	}
+	$out_seq = $out_seq . substr($src_seq, $i);
+
+
+
+	//echo '<div class="region-figure">' . $src_seq . '</div><br>';
+	return $out_seq;
+}
+
+
 ?>
 
 <!DOCTYPE html>
@@ -62,58 +113,15 @@ if (isset($_GET['id']))
 
 			$json_obj = json_decode($line_json);
 			
+			echo "<h3 id='" . $line_id . "'>" . $line_id . "</h3>";
+
 			foreach ($json_obj as $protein_id => $domains) {
-				$src_seq = $sequences[$protein_id];
-				$out_seq = "";
-				$nextWrap = 60;
-				$i = 0;
-
-
 				echo $protein_id . "<br>";
-				
-				foreach($domains as $j => $tup) {
-					$start = $tup[0];
-					$end = $tup[1];
-					echo $start . "," . $end . "<br>";
-
-					while ($nextWrap < $start) {
-						$out_seq = $out_seq . substr($src_seq, $i, $nextWrap - $i) . "<br>";
-						$i = $nextWrap;
-						$nextWrap = $nextWrap + 60;
-					} 
-					$out_seq = $out_seq . substr($src_seq, $i, $start - $i);
-					if ($j > 0)
-						$out_seq = $out_seq . "</a>";
-					$out_seq = $out_seq . "<a class='domain'>";
-					$i = $start;
-
-					while ($nextWrap < $end) {
-						$out_seq = $out_seq . substr($src_seq, $i, $nextWrap - $i) . "<br>";
-						$i = $nextWrap;
-						$nextWrap = $nextWrap + 60;
-					}
-					$out_seq = $out_seq . substr($src_seq, $i, $end - $i) . "</a>";
-					$i = $end;
-					if ($j < sizeof($domains)-1)
-						$out_seq = $out_seq . "<a class='linker'>";
-
-
-				}
-				
-				while ($nextWrap < strlen($src_seq)) {
-					$out_seq = $out_seq . substr($src_seq, $i, $nextWrap - $i) . "<br>";
-					$i = $nextWrap;
-					$nextWrap = $nextWrap + 60;
-				}
-				$out_seq = $out_seq . substr($src_seq, $i);
-
-
-
-				//echo '<div class="region-figure">' . $src_seq . '</div><br>';
-				echo '<div class="region-figure">' . $out_seq . '</div><br>';
+				$region_contents = displayRegions($protein_id, $domains, $sequences[$protein_id]);
+				echo '<div class="region-figure">' . $region_contents . '</div><hr>';
 			}	
 
-			echo "<h3 id='" . $line_id . "'>" . $line_id . "</h3>";
+			
 			echo "<code>" . $line_json . "</code><br>";	
 		}	
 	}
