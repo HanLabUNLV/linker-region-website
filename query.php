@@ -83,8 +83,8 @@ if (isset($_GET['id']))
 					} 
 					$out_seq = $out_seq . substr($src_seq, $i, $start - $i);
 					if ($j > 0)
-						$out_seq = $out_seq . "</span>";
-					$out_seq = $out_seq . "<span class='domain'>";
+						$out_seq = $out_seq . "</a>";
+					$out_seq = $out_seq . "<a class='domain'>";
 					$i = $start;
 
 					while ($nextWrap < $end) {
@@ -92,10 +92,10 @@ if (isset($_GET['id']))
 						$i = $nextWrap;
 						$nextWrap = $nextWrap + 60;
 					}
-					$out_seq = $out_seq . substr($src_seq, $i, $end - $i) . "</span>";
+					$out_seq = $out_seq . substr($src_seq, $i, $end - $i) . "</a>";
 					$i = $end;
 					if ($j < sizeof($domains)-1)
-						$out_seq = $out_seq . "<span class='linker'>";
+						$out_seq = $out_seq . "<a class='linker'>";
 
 
 				}

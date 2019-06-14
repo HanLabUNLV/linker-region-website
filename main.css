@@ -68,12 +68,18 @@ a {
 }
 
 .region-figure .domain {
+  padding:0.1em 0.25em;
+  border-radius:0.3em;
+  font-family: 'IBM Plex Mono', monospace;
   display: inline;
   padding:0;
   background: #7fb1ea;
 }
 
 .region-figure .linker {
+  padding:0.1em 0.25em;
+  border-radius:0.3em;
+  font-family: 'IBM Plex Mono', monospace;
   display: inline;
   padding:0;
   background: #ff87ba;
