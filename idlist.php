@@ -11,10 +11,10 @@
 	<h1>Gene Tree IDs</h1>
 	<ul>
 		<?php
-		$fh = fopen("/linkerregions/data/idlist.txt", "r");
+		$fh = fopen("data/idlist.txt", "r");
 		while ($line = fgets($fh)) {
 			$id = trim($line);
-			echo '<li><a href="/linkerregions/query.php?id="' . $id . '">' . $id . '</a></li>';
+			echo '<li><a href="/linkerregions/query.php?id=' . $id . '">' . $id . '</a></li>';
 		}
 
 
