@@ -90,3 +90,16 @@ a {
 .region-figure .linker:hover, .region-figure .domain:hover {
   color: #fff;
 }
+
+a .tooltip {
+  visibility: hidden;
+  position:absolute;
+  z-index: 1;
+  padding: 5px 0;
+  background-color: black;
+  color: white;
+}
+
+a:hover .tooltip {
+  visibility: visible;
+}

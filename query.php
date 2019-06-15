@@ -10,30 +10,40 @@ function displayRegions($protein_id, $domains, $src_seq) {
 	$i = 0;
 
 
-
-	
 	foreach($domains as $j => $tup) {
 		$start = $tup[0];
 		$end = $tup[1];
 
+		//All newlines before the start
 		while ($nextWrap < $start) {
 			$out_seq = $out_seq . substr($src_seq, $i, $nextWrap - $i) . "<br>";
 			$i = $nextWrap;
 			$nextWrap = $nextWrap + 60;
-		} 
+		}
+
+		//Remaining text before the start of the domain
 		$out_seq = $out_seq . substr($src_seq, $i, $start - $i);
+
+		//End the previous linker region
 		if ($j > 0)
 			$out_seq = $out_seq . "</a>";
-		$out_seq = $out_seq . "<a class='domain'>";
+
+		//Start the domain
+		$out_seq = $out_seq . "<a class='domain'><div class='tooltip'>beep</div>";
 		$i = $start;
 
+		//All newlines before the end of the domain
 		while ($nextWrap < $end) {
 			$out_seq = $out_seq . substr($src_seq, $i, $nextWrap - $i) . "<br>";
 			$i = $nextWrap;
 			$nextWrap = $nextWrap + 60;
 		}
+
+		//End the domain
 		$out_seq = $out_seq . substr($src_seq, $i, $end - $i) . "</a>";
 		$i = $end;
+
+		//Begin a linker region if not the last domain in the read(?)
 		if ($j < sizeof($domains)-1)
 			$out_seq = $out_seq . "<a class='linker'>";
 
@@ -47,9 +57,6 @@ function displayRegions($protein_id, $domains, $src_seq) {
 	}
 	$out_seq = $out_seq . substr($src_seq, $i);
 
-
-
-	//echo '<div class="region-figure">' . $src_seq . '</div><br>';
 	return $out_seq;
 }
 
