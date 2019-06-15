@@ -61,8 +61,10 @@ a {
 
 
 .region-figure {
+  padding: 0.5em;
+  border-radius: 0.5em;
   display:inline-block;
-  background: #ddd;
+  background: #ededed;
   font-family: 'IBM Plex Mono', monospace;
   word-break: keep-all;
 }
