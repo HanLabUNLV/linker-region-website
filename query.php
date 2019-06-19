@@ -4,7 +4,7 @@ $id = '?';
 if (isset($_GET['id']))
 	$id = trim($_GET['id']);
 
-function displayRegions($protein_id, $domains, $src_seq) {
+function displayRegions($gene_tree_id, $protein_id, $domains, $src_seq) {
 	$out_seq = "";
 	$nextWrap = 60;
 	$i = 0;
@@ -38,7 +38,8 @@ function displayRegions($protein_id, $domains, $src_seq) {
 			$out_seq = $out_seq . "</a>";
 
 		//Start the domain
-		$out_seq = $out_seq . "<a class='domain'><div class='tooltip'>" . $dname . "</div>";
+		$full_dname = $gene_tree_id . "_" . $dname;
+		$out_seq = $out_seq . "<a class='domain'><div class='tooltip'>" . $full_dname . " (" . $start . ", " . $end . ")</div>";
 		$i = $start;
 
 		//All newlines before the end of the domain
@@ -133,7 +134,7 @@ function displayRegions($protein_id, $domains, $src_seq) {
 
 			foreach ($json_obj as $protein_id => $domains) {
 				echo $protein_id . "<br>";
-				$region_contents = displayRegions($protein_id, $domains, $sequences[$protein_id]);
+				$region_contents = displayRegions($line_id, $protein_id, $domains, $sequences[$protein_id]);
 				echo '<div class="region-figure">' . $region_contents . '</div><hr>';
 			}	
 
