@@ -74,6 +74,7 @@ a {
   border-radius:0.3em;
   font-family: 'IBM Plex Mono', monospace;
   display: inline;
+  position:relative;
   padding:0;
   background: #7fb1ea;
 }
@@ -88,15 +89,18 @@ a {
 }
 
 .region-figure .linker:hover, .region-figure .domain:hover {
-  color: #fff;
+  color: rgba(255,255,255,0.75);
 }
 
 a .tooltip {
   visibility: hidden;
   position:absolute;
+  left: 105%;
+  width:200px;
   z-index: 1;
-  padding: 5px 0;
+  padding: 0.1em 0.25em;
   background-color: black;
+  border-radius: 0.3em;
   color: white;
 }
 
