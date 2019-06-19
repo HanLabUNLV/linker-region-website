@@ -9,10 +9,19 @@ function displayRegions($protein_id, $domains, $src_seq) {
 	$nextWrap = 60;
 	$i = 0;
 
+	//sort domains into an ordered list here
+	//.........
+	//??? jk we're doing this in another script XDDDD!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
+
+
+
+	//done sorting
+
 
 	foreach($domains as $j => $tup) {
-		$start = $tup[0];
-		$end = $tup[1];
+		$dname = $tup[0];
+		$start = $tup[1];
+		$end = $tup[2];
 
 		//All newlines before the start
 		while ($nextWrap < $start) {
@@ -29,7 +38,7 @@ function displayRegions($protein_id, $domains, $src_seq) {
 			$out_seq = $out_seq . "</a>";
 
 		//Start the domain
-		$out_seq = $out_seq . "<a class='domain'><div class='tooltip'>beep</div>";
+		$out_seq = $out_seq . "<a class='domain'><div class='tooltip'>" . $dname . "</div>";
 		$i = $start;
 
 		//All newlines before the end of the domain
@@ -94,7 +103,7 @@ function displayRegions($protein_id, $domains, $src_seq) {
 	<hr>
 
 	<?php
-	$fh = fopen('data/superfamily_sorted_shifted_dict_stratified.json', 'r');
+	$fh = fopen('data/master_dict_stratified.txt', 'r');
 	$n = 0;
 	while ($line = fgets($fh)) {
 		$tab = strpos($line, "\t");
