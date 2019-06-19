@@ -96,7 +96,7 @@ a .tooltip {
   visibility: hidden;
   position:absolute;
   left: 105%;
-  width:200px;
+  width:20em;
   z-index: 1;
   padding: 0.1em 0.25em;
   background-color: black;
