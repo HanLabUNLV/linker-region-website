@@ -19,6 +19,11 @@ function displayRegions($gene_tree_id, $protein_id, $domains, $src_seq) {
 
 
 	foreach($domains as $j => $tup) {
+		$isLinker = FALSE;
+		if (count($tup) == 3)
+			$isLinker = TRUE;
+		else
+			$pfamid = $tup[3];
 		$dname = $tup[0];
 		$start = $tup[1];
 		$end = $tup[2];
@@ -33,13 +38,15 @@ function displayRegions($gene_tree_id, $protein_id, $domains, $src_seq) {
 		//Remaining text before the start of the domain
 		$out_seq = $out_seq . substr($src_seq, $i, $start - $i);
 
-		//End the previous linker region
-		if ($j > 0)
-			$out_seq = $out_seq . "</a>";
 
 		//Start the domain
 		$full_dname = $gene_tree_id . "_" . $dname;
-		$out_seq = $out_seq . "<a class='domain'><div class='tooltip'>" . $full_dname . " (" . $start . ", " . $end . ")</div>";
+		if ($isLinker)
+			$out_seq = $out_seq . "<a class='linker'><div class='tooltip'>" . $full_dname . " (" . $start . ", " . $end . ")</div>";
+		else {
+			$link = "https://www.ebi.ac.uk/interpro/signature/" . $pfamid;
+			$out_seq = $out_seq . "<a class='domain' href='" . $link . "'><div class='tooltip'>" . $pfamid . " // " . $full_dname . " (" . $start . ", " . $end . ")</div>";
+		}
 		$i = $start;
 
 		//All newlines before the end of the domain
@@ -52,11 +59,6 @@ function displayRegions($gene_tree_id, $protein_id, $domains, $src_seq) {
 		//End the domain
 		$out_seq = $out_seq . substr($src_seq, $i, $end - $i) . "</a>";
 		$i = $end;
-
-		//Begin a linker region if not the last domain in the read(?)
-		if ($j < sizeof($domains)-1)
-			$out_seq = $out_seq . "<a class='linker'>";
-
 
 	}
 	
