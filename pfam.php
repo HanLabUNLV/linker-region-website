@@ -3,6 +3,20 @@
 $id = '?';
 if (isset($_GET['id']))
 	$id = trim($_GET['id']);
+
+
+$ch = curl_init();
+
+curl_setopt($ch, CURLOPT_URL, "https://hanlab.pythonanywhere.com/linkerregions/pfamid?pfam=".$id);
+curl_setopt($ch, CURLOPT_RETURNTRANSFER, 1);
+curl_setopt($ch, CURLOPT_HTTPHEADER, array('Content-type: application/json'));
+$output = curl_exec($ch);
+curl_close($ch);
+
+$pfam_data = json_decode($output);
+$gene_trees = $pfam_data->gene_trees;
+$linker_neighbors = $pfam_data->linker_neighbors;
+
 ?>
 
 <!DOCTYPE html>
@@ -15,32 +29,28 @@ if (isset($_GET['id']))
 
 
 <body>
-	<?php
-        // create curl resource
-        $ch = curl_init();
 
-        // set url
-        curl_setopt($ch, CURLOPT_URL, "https://hanlab.pythonanywhere.com/linkerregions/pfamid?pfam=".$id);
+	<div style="display:flex;">
+		<div>
+	    <?php
+	        foreach ($gene_trees as $gt) {
+	        	print_r($gt . '<br>');
+	        }
 
-        //return the transfer as a string
-        curl_setopt($ch, CURLOPT_RETURNTRANSFER, 1);
-        curl_setopt($ch, CURLOPT_HTTPHEADER, array('Content-type: application/json'));
+	        #print_r($output);  
+		?>
+		</div>
 
-        // $output contains the output string
-        $output = curl_exec($ch);
+		<div>
+	    <?php
+	        foreach ($linker_neighbors as $linker) {
+	        	print_r($linker . '<br>');
+	        }
 
-        // close curl resource to free up system resources
-        curl_close($ch);
-
-        $pfam_data = json_decode($output);
-        $gene_trees = $pfam_data->gene_trees;
-
-        foreach ($gene_trees as $gt) {
-        	print_r($gt . '<br>');
-        }
-
-        #print_r($output);  
-	?>
+	        #print_r($output);  
+		?>
+		</div>
+	</div>
 
 
 
