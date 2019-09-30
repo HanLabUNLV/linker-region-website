@@ -32,7 +32,14 @@ if (isset($_GET['id']))
         // close curl resource to free up system resources
         curl_close($ch);
 
-        print_r($output);  
+        $pfam_data = json_decode($output);
+        $gene_trees = $pfam_data->gene_trees;
+
+        foreach ($gene_trees as $gt) {
+        	print_r($gt . '<br>');
+        }
+
+        #print_r($output);  
 	?>
 
 
