@@ -24,6 +24,7 @@ if (isset($_GET['id']))
 
         //return the transfer as a string
         curl_setopt($ch, CURLOPT_RETURNTRANSFER, 1);
+        curl_setopt($ch, CURLOPT_HTTPHEADER, array('Content-type: application/json'))
 
         // $output contains the output string
         $output = curl_exec($ch);
