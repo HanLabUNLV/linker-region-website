@@ -41,7 +41,7 @@ $linker_neighbors = $pfam_data->linker_neighbors;
 			<ul>
 		    <?php
 		        foreach ($gene_trees as $gt) {
-		        	print_r('<li><a href="/linkerregions/query.php?id=$gt">$gt</a></li>');
+		        	echo "<li><a href='/linkerregions/query.php?id=$gt'>$gt</a></li>";
 		        }
 
 		        #print_r($output);  
