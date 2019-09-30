@@ -20,7 +20,7 @@ if (isset($_GET['id']))
         $ch = curl_init();
 
         // set url
-        curl_setopt($ch, CURLOPT_URL, "https://hanlab.pythonanywhere.com");
+        curl_setopt($ch, CURLOPT_URL, "https://hanlab.pythonanywhere.com/linkerregions/pfamid?pfam=".$id);
 
         //return the transfer as a string
         curl_setopt($ch, CURLOPT_RETURNTRANSFER, 1);
