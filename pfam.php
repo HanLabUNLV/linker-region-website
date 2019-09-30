@@ -29,19 +29,26 @@ $linker_neighbors = $pfam_data->linker_neighbors;
 
 
 <body>
+	<a href="/linkerregions" class="fancy-link">Home</a><br>
+	<h1>Query Results&nbsp</h1>
+	<h2>"<?php echo $id; ?>"</h2><br>
+	
+
 
 	<div style="display:flex;">
-		<div>
-	    <?php
-	        foreach ($gene_trees as $gt) {
-	        	print_r($gt . '<br>');
-	        }
+		<div width="50%">
+			<p><b>Appears in:</b><p>
+		    <?php
+		        foreach ($gene_trees as $gt) {
+		        	print_r($gt . '<br>');
+		        }
 
-	        #print_r($output);  
-		?>
+		        #print_r($output);  
+			?>
 		</div>
 
-		<div>
+		<div width="50%">
+			<p><b>Flanked by these linker regions:</b><p>
 	    <?php
 	        foreach ($linker_neighbors as $linker) {
 	        	print_r($linker . '<br>');
