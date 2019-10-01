@@ -16,8 +16,8 @@ function displayRegions($gene_tree_id, $protein_id, $domains, $src_seq) {
 		else
 			$pfamid = $tup[3];
 		$dname = $tup[0];
-		$start = $tup[1];
-		$end = $tup[2];
+		$start = $tup[1]-1;
+		$end = $tup[2]-1;
 
 		//All newlines before the start
 		while ($nextWrap < $start) {
