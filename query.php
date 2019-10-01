@@ -6,8 +6,8 @@ if (isset($_GET['id']))
 
 function displayRegions($gene_tree_id, $protein_id, $domains, $src_seq) {
 	$out_seq = "";
-	$nextWrap = 61;
-	$i = 1;
+	$nextWrap = 60;
+	$i = 0;
 
 	foreach($domains as $j => $tup) {
 		$isLinker = FALSE;
@@ -21,7 +21,7 @@ function displayRegions($gene_tree_id, $protein_id, $domains, $src_seq) {
 
 		//All newlines before the start
 		while ($nextWrap < $start) {
-			$out_seq = $out_seq . substr($src_seq, $i-1, $nextWrap - $i -1) . "<br>";
+			$out_seq = $out_seq . substr($src_seq, $i, $nextWrap - $i) . "<br>";
 			$i = $nextWrap;
 			$nextWrap = $nextWrap + 60;
 		}
