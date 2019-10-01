@@ -6,7 +6,7 @@ if (isset($_GET['id']))
 
 function displayRegions($gene_tree_id, $protein_id, $domains, $src_seq) {
 	$out_seq = "";
-	$nextWrap = 60;
+	$nextWrap = 61;
 	$i = 1;
 
 	foreach($domains as $j => $tup) {
