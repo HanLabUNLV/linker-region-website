@@ -14,7 +14,7 @@ $output = curl_exec($ch);
 curl_close($ch);
 
 $linker_sequences = json_decode($output);
-$gt = substr($id, 0,strpos($id, "Linker"));
+$gt = substr($id, 0,strpos($id, "Linker")-1);
 ?>
 
 <!DOCTYPE=html>
@@ -29,7 +29,7 @@ $gt = substr($id, 0,strpos($id, "Linker"));
 
 	<h1><?php echo $id?></h1>
 <?php
-	echo "<p>(From gene tree: <a href='/linkerregions/query?id=$gt'>$gt</a>)</p>";
+	echo "<p>(From gene tree: <a class='fancy-link' href='/linkerregions/query?id=$gt'>$gt</a>)</p>";
 
 	foreach ($linker_sequences as $linkerId => $seq) {
 		echo "<h2>>$linkerId</h2>";
