@@ -7,7 +7,7 @@ if (isset($_GET['id']))
 function displayRegions($gene_tree_id, $protein_id, $domains, $src_seq) {
 	$out_seq = "";
 	$nextWrap = 60;
-	$i = 0;
+	$i = 1;
 
 	foreach($domains as $j => $tup) {
 		$isLinker = FALSE;
@@ -34,10 +34,10 @@ function displayRegions($gene_tree_id, $protein_id, $domains, $src_seq) {
 		$full_dname = $gene_tree_id . "_" . $dname;
 		if ($isLinker) {
 			$link = "linker.php?id=" . $full_dname;
-			$out_seq = $out_seq . "<a class='linker' href='" . $link . "'><div class='tooltip'>" . $full_dname . " (" . $start . ", " . $end . ")</div>";
+			$out_seq = $out_seq . "<a class='linker' href='$link'><div class='tooltip'>$full_dname ($start, $end)</div>";
 		} else {
 			$link = "https://www.ebi.ac.uk/interpro/signature/" . $pfamid;
-			$out_seq = $out_seq . "<a class='domain' href='" . $link . "'><div class='tooltip'>" . $pfamid . " // " . $full_dname . " (" . $start . ", " . $end . ")</div>";
+			$out_seq = $out_seq . "<a class='domain' href='" . $link . "'><div class='tooltip'>$pfamid // $full_dname ($start, $end)</div>";
 		}
 		$i = $start;
 
