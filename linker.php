@@ -4,10 +4,10 @@ $id = '?';
 if (isset($_GET['id']))
 	$id = trim($_GET['id']);
 
-
+$query = "https://hanlab.pythonanywhere.com/linkerregions/linkerid?linker=$id";
 $ch = curl_init();
 
-curl_setopt($ch, CURLOPT_URL, "https://hanlab.pythonanywhere.com/linkerregions/linkerid?linker=$id");
+curl_setopt($ch, CURLOPT_URL, $query);
 curl_setopt($ch, CURLOPT_RETURNTRANSFER, 1);
 curl_setopt($ch, CURLOPT_HTTPHEADER, array('Content-type: application/json'));
 $output = curl_exec($ch);
@@ -30,6 +30,10 @@ $gt = substr($id, 0,strpos($id, "Linker")-1);
 	<h1><?php echo $id?></h1>
 <?php
 	echo "<p>(From gene tree: <a class='fancy-link' href='/linkerregions/query?id=$gt'>$gt</a>)</p>";
+
+	echo "<p><b>Query using REST API:</b></p>";
+	echo "<code>$query</code>";
+
 
 	foreach ($linker_sequences as $linkerId => $seq) {
 		echo "<h2>>$linkerId</h2>";

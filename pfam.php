@@ -4,10 +4,11 @@ $id = '?';
 if (isset($_GET['id']))
 	$id = trim($_GET['id']);
 
+$query = "https://hanlab.pythonanywhere.com/linkerregions/pfamid?pfam=$id";
 
 $ch = curl_init();
 
-curl_setopt($ch, CURLOPT_URL, "https://hanlab.pythonanywhere.com/linkerregions/pfamid?pfam=".$id);
+curl_setopt($ch, CURLOPT_URL, $query);
 curl_setopt($ch, CURLOPT_RETURNTRANSFER, 1);
 curl_setopt($ch, CURLOPT_HTTPHEADER, array('Content-type: application/json'));
 $output = curl_exec($ch);
@@ -33,6 +34,8 @@ $linker_neighbors = $pfam_data->linker_neighbors;
 	<h1>Query Results&nbsp</h1>
 	<h2>"<?php echo $id; ?>"</h2><br>
 	
+	<p><b>Query using REST API:</b></p>
+	<?php echo "<code>$query</code>"; ?>
 
 
 	<div style="display:flex;">
