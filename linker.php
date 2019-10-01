@@ -33,7 +33,7 @@ $gt = substr($id, 0,strpos($id, "Linker")-1);
 
 	echo "<p><b>Query using REST API:</b></p>";
 	echo "<code>$query</code>";
-
+	echo "<hr>";
 
 	foreach ($linker_sequences as $linkerId => $seq) {
 		echo "<h2>>$linkerId</h2>";

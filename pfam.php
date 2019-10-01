@@ -36,7 +36,7 @@ $linker_neighbors = $pfam_data->linker_neighbors;
 	
 	<p><b>Query using REST API:</b></p>
 	<?php echo "<code>$query</code>"; ?>
-
+	<hr>
 
 	<div style="display:flex;">
 		<div style="width:50%;">
