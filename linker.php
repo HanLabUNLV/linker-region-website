@@ -14,6 +14,7 @@ $output = curl_exec($ch);
 curl_close($ch);
 
 $linker_sequences = json_decode($output);
+$gt = substr($id, 0,strpos($id, "Linker"));
 ?>
 
 <!DOCTYPE=html>
@@ -28,22 +29,7 @@ $linker_sequences = json_decode($output);
 
 	<h1><?php echo $id?></h1>
 <?php
-	/*$fastafile = fopen("data/linker_fastas/" . $id . ".fasta.fas","r") or die("Unable to locate linker: " . $id);
-	$first = TRUE;
-	while (!feof($fastafile)) {
-		$line = fgets($fastafile);
-		if (substr($line, 0, 1) == ">") {
-			if ($first)
-				$first = FALSE;
-			else
-				echo "</code>";
-			echo "<h2>" . $line . "</h2><code>";
-		}
-		else
-			echo $line;
-	}
-
-	fclose($fastafile);*/
+	echo "<p>(From gene tree: <a href='/linkerregions/query?id=$gt'>$gt</a>)</p>";
 
 	foreach ($linker_sequences as $linkerId => $seq) {
 		echo "<h2>>$linkerId</h2>";
