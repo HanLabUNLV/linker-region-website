@@ -57,7 +57,7 @@ $linker_neighbors = $pfam_data->linker_neighbors;
 			<ul>
 		    <?php
 		        foreach ($linker_neighbors as $linker) {
-		        	echo "<li><a href='linkerregions/linker.php?id=$linker'>$linker</a></li>";
+		        	echo "<li><a href='/linkerregions/linker.php?id=$linker'>$linker</a></li>";
 		        }
 
 		        #print_r($output);  
