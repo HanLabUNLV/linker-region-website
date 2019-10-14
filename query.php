@@ -36,7 +36,7 @@ function displayRegions($gene_tree_id, $protein_id, $domains, $src_seq) {
 			$link = "linker.php?id=" . $full_dname;
 			$out_seq = $out_seq . "<a class='linker' href='$link'><div class='tooltip'>$full_dname ($start, $end)</div>";
 		} else {
-			$link = "https://www.ebi.ac.uk/interpro/signature/" . $pfamid;
+			$link = "domain.php?id=" . $full_dname;
 			$out_seq = $out_seq . "<a class='domain' href='" . $link . "'><div class='tooltip'>$pfamid // $full_dname ($start, $end)</div>";
 		}
 		$i = $start;

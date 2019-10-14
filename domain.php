@@ -29,6 +29,8 @@ $gt = substr($id, 0,strpos($id, "Domain")-1);
 
 	<h1><?php echo $id?></h1>
 <?php
+	#$link = "https://www.ebi.ac.uk/interpro/signature/" . $pfamid;
+	# use this link once we figure out what the pfam is
 	echo "<p>(From gene tree: <a class='fancy-link' href='/linkerregions/query.php?id=$gt'>$gt</a>)</p>";
 
 	echo "<p><b>Query using REST API:</b></p>";
