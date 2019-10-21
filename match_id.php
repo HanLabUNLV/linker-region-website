@@ -25,7 +25,7 @@ if (preg_match('/^PF[0-9]+$/', $id) == 1)
 	}
 
 </script>
-<form action="javascript:redirect();">
+<form action="javascript:redirect();" method="get">
 	<input id="idSearchBox" type="text" name="id"/>
 	<input type="submit" value="Search"/>
 </form>
