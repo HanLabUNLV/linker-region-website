@@ -34,6 +34,7 @@ code {
   font-famiy: 'IBM Plex Mono', monospace;
   display: block;
   line-break: anywhere;
+  word-break: anywhere;
 }
 
 input {
