@@ -21,7 +21,7 @@ if (preg_match('/^PF[0-9]+$/', $id) == 1)
 			location.href = "/linkerregions/query.php?id="+inp;
 		else if (inp.match(/^ENSGT[0-9_]+_Domain_[0-9]+$/))
 			location.href = "/linkerregions/domain.php?id="+inp;
-		else if (inp.match(/^ENSGT[0-9_]+_Linker_[0-9]+$/))
+		else if (inp.match(/^ENSGT[0-9_]+_Linker_[0-9]+_[0-9]+$/))
 			location.href = "/linkerregions/linker.php?id="+inp;
 		else if (inp.match(/^PF[0-9]+$/))
 			location.href = "/linkerregions/pfam.php?id="+inp;
