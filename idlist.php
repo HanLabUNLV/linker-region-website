@@ -8,6 +8,9 @@
 
 
 <body>
+	<?php
+		include 'match_id.php';
+	?>
 	<h1>Gene Tree IDs</h1>
 	<ul>
 		<?php
