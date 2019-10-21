@@ -20,7 +20,7 @@ if (preg_match('/^PF[0-9]+$/', $id) == 1)
 <script>
 	function redirect() {
 		var inp = document.getElementById("idSearchBox").value;
-		alert("!!!!");
+		alert(inp.match(/^ENSGT[0-9]+$/));
 		location.href = "/linkerregions/query.php?id="+inp;
 	}
 
