@@ -77,7 +77,10 @@ function displayRegions($gene_tree_id, $protein_id, $domains, $src_seq) {
 
 
 <body>
-	<a href="/linkerregions" class="fancy-link">Back</a><br>
+	<a href="/linkerregions" class="fancy-link">Home</a><br>
+	<?php
+		include 'match_id.php';
+	?>
 	<h1>Query Results&nbsp</h1>
 	<h2>"<?php echo $id; ?>"</h2><br>
 	<p><b>Found:</b><p>

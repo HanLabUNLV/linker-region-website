@@ -26,7 +26,9 @@ $gt = substr($id, 0,strpos($id, "Domain")-1);
 <body>
 
 	<a class="fancy-link" href="/linkerregions">Home</a><br>
-
+	<?php
+		include 'match_id.php';
+	?>
 	<h1><?php echo $id?></h1>
 <?php
 	#$link = "https://www.ebi.ac.uk/interpro/signature/" . $pfamid;

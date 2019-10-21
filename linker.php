@@ -26,7 +26,9 @@ $gt = substr($id, 0,strpos($id, "Linker")-1);
 <body>
 
 	<a class="fancy-link" href="/linkerregions">Home</a><br>
-
+	<?php
+		include 'match_id.php';
+	?>
 	<h1><?php echo $id?></h1>
 <?php
 	echo "<p>(From gene tree: <a class='fancy-link' href='/linkerregions/query.php?id=$gt'>$gt</a>)</p>";
