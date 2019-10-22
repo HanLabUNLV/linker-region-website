@@ -18,7 +18,10 @@ if (preg_match('/^PF[0-9]+$/', $id) == 1)
 	function redirect() {
 		var inp = document.getElementById("idSearchBox").value;
 
-		inp = inp.match(/(\S+)/); //remove whitespace
+		var matches = inp.match(/(\S+)/); //remove whitespace
+		if (matches)
+			inp = matches[0];
+		
 		if (inp.match(/^ENSGT[0-9_]+$/))
 			location.href = "/linkerregions/query.php?id="+inp;
 		else if (inp.match(/^ENSGT[0-9_]+_Domain_[0-9]+$/))
