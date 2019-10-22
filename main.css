@@ -45,6 +45,11 @@ input {
   height: 1.6em;
 }
 
+.searchbox-form {
+  margin-top: 1.2em;
+  margin-left: 0.2em;
+}
+
 a {
   font-weight: 500;
   color: #202020;
