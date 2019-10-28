@@ -30,10 +30,8 @@ if (preg_match('/^PF[0-9]+$/', $id) == 1)
 			location.href = "/linkerregions/linker.php?id="+inp;
 		else if (inp.match(/^PF[0-9]+$/))
 			location.href = "/linkerregions/pfam.php?id="+inp;
-		else if (inp.match(/^ENS[A-Z]*P[0-9]+$/))
-			alert("Protein ID not yet supported")
 		else
-			alert("Invalid id");
+			location.href = "https://hanlab.pythonanywhere.com/linkerregions/get_meta?id="+inp;
 	}
 </script>
 
