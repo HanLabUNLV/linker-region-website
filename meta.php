@@ -43,9 +43,16 @@ $transcripts = $meta_data->transcripts;
 	<hr>
 
 	<?php
-		echo "<h2>Gene Name: $gene_name</h2>";
-		echo "<h2>Gene ID: $gene_id</h2>";
+		echo "<h2>Gene Name: $gene_name</h2><br>";
+		echo "<h2>Gene ID: $gene_id</h2><br>";
 		echo "<h2>Gene Tree: $gene_tree</h2>";
+
+		echo "<ul>";
+		foreach ($transcripts as $t)
+			$tid = $t->transcript_id;
+			$pid = $t->protein_id;
+			echo "<li>$tid :: $pid</li>";
+		echo "</ul>";
 	?>
 
 

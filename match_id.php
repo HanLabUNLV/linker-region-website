@@ -31,7 +31,7 @@ if (preg_match('/^PF[0-9]+$/', $id) == 1)
 		else if (inp.match(/^PF[0-9]+$/))
 			location.href = "/linkerregions/pfam.php?id="+inp;
 		else
-			location.href = "https://hanlab.pythonanywhere.com/linkerregions/get_meta?id="+inp;
+			location.href = "/linkerregions/meta.php?id="+inp;
 	}
 </script>
 
