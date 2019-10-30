@@ -37,8 +37,8 @@ $gt = substr($id, 0,strpos($id, "Linker")-1);
 	echo "<code>$query</code>";
 	echo "<hr>";
 
-	foreach ($linker_sequences as $linkerId => $seq) {
-		echo "<h2>>$linkerId</h2>";
+	foreach ($linker_sequences as $protein => $seq) {
+		echo "<h2>>$protein</h2> <a class='fancy-link' href='/linkerregions/meta.php?id=$protein'>(view protein)</a>";
 		echo "<code>$seq</code>";
 	}
 
