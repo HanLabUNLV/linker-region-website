@@ -16,7 +16,9 @@ curl_close($ch);
 
 $meta_data = json_decode($output);
 $gene_tree = $meta_data->gene_tree;
-$gene = $meta_data->gene;
+$gene_id = $meta_data->gene_id;
+$gene_name = $meta_data->gene_name;
+$transcripts = $meta_data->transcripts;
 ?>
 
 <!DOCTYPE html>
@@ -41,8 +43,9 @@ $gene = $meta_data->gene;
 	<hr>
 
 	<?php
-		echo "<h2>$gene</h2>";
-		echo "<h2>$gene_tree</h2>";
+		echo "<h2>Gene Name: $gene_name</h2>";
+		echo "<h2>Gene ID: $gene_id</h2>";
+		echo "<h2>Gene Tree: $gene_tree</h2>";
 	?>
 
 
