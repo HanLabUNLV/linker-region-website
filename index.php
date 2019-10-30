@@ -32,6 +32,7 @@
     </div>
   </div>
 
+<hr>
 <p>
   You can view the full list of Gene Tree IDs we have here:<br>
   <a class="fancy-link" href="/linkerregions/idlist.php">Gene Tree ID List</a>
