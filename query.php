@@ -130,7 +130,7 @@ function displayRegions($gene_tree_id, $protein_id, $domains, $src_seq) {
 			echo "<h3 id='" . $line_id . "'>" . $line_id . "</h3>";
 
 			foreach ($json_obj as $protein_id => $domains) {
-				echo $protein_id . "<br>";
+				echo "$protein_id <a class='fancy-link' href='/linkerregions/meta.php?id=$protein_id'>(view gene)</a><br>";
 				$region_contents = displayRegions($line_id, $protein_id, $domains, $sequences[$protein_id]);
 				echo '<div class="region-figure">' . $region_contents . '</div><hr>';
 			}	
