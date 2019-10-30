@@ -43,11 +43,14 @@ $transcripts = $meta_data->transcripts;
 	<hr>
 
 	<?php
-		echo "<h2>Gene Name: $gene_name</h2><br>";
-		echo "<h2>Gene ID: $gene_id</h2><br>";
 		echo "<h2>Gene Tree: $gene_tree</h2>";
+		if ($gene_tree)
+			echo "<a class='fancy-link' href='/linkerregions/query.php?id=$gene_tree'>(view domains and linker regions)</a>";
 
-		echo "<ul>";
+		echo "<br><h2>Gene: $gene_name ($gene_id)</h2><br>";
+		
+
+		echo "<p><b>Transcripts :: Proteins:</b></p><ul>";
 		foreach ($transcripts as $t) {
 			$tid = $t->transcript_id;
 			$pid = $t->protein_id;
