@@ -48,10 +48,11 @@ $transcripts = $meta_data->transcripts;
 		echo "<h2>Gene Tree: $gene_tree</h2>";
 
 		echo "<ul>";
-		foreach ($transcripts as $t)
+		foreach ($transcripts as $t) {
 			$tid = $t->transcript_id;
 			$pid = $t->protein_id;
 			echo "<li>$tid :: $pid</li>";
+		}
 		echo "</ul>";
 	?>
 
