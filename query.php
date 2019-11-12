@@ -16,18 +16,18 @@ function displayRegions($gene_tree_id, $protein_id, $domains, $src_seq) {
 		else
 			$pfamid = $tup[3];
 		$dname = $tup[0];
-		$start = $tup[1]-1;
-		$end = $tup[2]-1;
+		$start = $tup[1];
+		$end = $tup[2];
 
 		//All newlines before the start
-		while ($nextWrap < $start) {
+		while ($nextWrap < $start-1) {
 			$out_seq = $out_seq . substr($src_seq, $i, $nextWrap - $i) . "<br>";
 			$i = $nextWrap;
 			$nextWrap = $nextWrap + 60;
 		}
 
 		//Remaining text before the start of the domain
-		$out_seq = $out_seq . substr($src_seq, $i, $start - $i);
+		$out_seq = $out_seq . substr($src_seq, $i, $start-1 - $i);
 
 
 		//Start the domain
@@ -39,18 +39,18 @@ function displayRegions($gene_tree_id, $protein_id, $domains, $src_seq) {
 			$link = "domain.php?id=" . $full_dname;
 			$out_seq = $out_seq . "<a class='domain' href='" . $link . "'><div class='tooltip'>$pfamid // $full_dname ($start, $end)</div>";
 		}
-		$i = $start;
+		$i = $start-1;
 
 		//All newlines before the end of the domain
-		while ($nextWrap < $end) {
+		while ($nextWrap < $end-1) {
 			$out_seq = $out_seq . substr($src_seq, $i, $nextWrap - $i) . "<br>";
 			$i = $nextWrap;
 			$nextWrap = $nextWrap + 60;
 		}
 
 		//End the domain
-		$out_seq = $out_seq . substr($src_seq, $i, $end - $i) . "</a>";
-		$i = $end;
+		$out_seq = $out_seq . substr($src_seq, $i, $end-1 - $i) . "</a>";
+		$i = $end-1;
 
 	}
 	
